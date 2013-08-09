@@ -1,0 +1,322 @@
+
+    <!-- Retrospective View -->
+
+    <ul class="breadcrumb">
+        <li><a href="/">Projects</a></li>
+        <li><a href="/project/{{project._id}}">{{project.name}}</a></li>
+        <li class="active">{{format_date}}</li>
+    </ul>
+
+    <form action="/retrospective/update" method="post" class="form form-retrospective-update">
+        <fieldset>
+            <header class="page-header">
+                <h1>{{format_date}} <small>Retrospective Health: <strong>{{retrospective.health}}%</strong> <span class="text-success"></span></small></h1>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">Summary</span>
+                        <input type="text" class="form-control" name="retrospectiveSummary" value="{{retrospective.summary}}" placeholder="How is the project going?" />
+                    </div>
+                </div>
+
+                <div class="alert alert-info text-center">
+                    If you've been asked to provide feedback, <a href="/project/{{project._id}}/retrospective/{{retrospective._id}}/form" class="alert-link">head over to this form and fill it out for great justice</a>.
+                </div>
+            </header>
+
+            <hr class="page-break" />
+
+            <h2>Meeting Attendees</h2>
+
+            {{#if retrospective.participants}}
+            <div class="row">
+                {{#each retrospective.participants}}
+                <div class="col-lg-6">
+                    <div class="input-group"> 
+                        <span class="input-group-addon">
+                            <input type="checkbox" name="{{_id}}" id="{{_id}}" value="" {{#if attended}}checked="checked"{{/if}}/>
+                        </span>
+                        <label class="form-control">{{name}}</label>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{else}}
+            <p class="text-muted">
+                No feedback yet
+            </p>
+            {{/if}}
+
+            <hr class="page-break" />
+
+            <h2>Project Health Metrics</h2>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Questions with a wide range of answers</h3>
+
+                    <ul class="list-group">
+
+                        {{#unless retrospective.wideRangingQuestions.length}}
+                            <li class="list-group-item">None</li>
+                        {{/unless}}
+
+                        {{#each retrospective.wideRangingQuestions}}
+                            <li class="list-group-item"><a href="#{{_id}}">{{name}}</a></li>
+                        {{/each}}
+
+
+                    </ul>
+                </div>
+
+                <div class="col-lg-6">
+                    <h3>Questions with many &ldquo;I don't know&rdquo; answers</h3>
+
+                    <ul class="list-group">
+                        {{#unless retrospective.unansweredQuestions.length}}
+                            <li class="list-group-item">None</li>
+                        {{/unless}}
+
+                        {{#each retrospective.unansweredQuestions}}
+                            <li class="list-group-item"><a href="#{{_id}}">{{name}}</a></li>
+                        {{/each}}  
+                 
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="page-break" />
+
+            <h2>Summary of Results</h2>
+
+            <h3>Project Health</h3>
+
+            <div class="row">
+                {{#each projectHealth}}
+                    <div class="col-lg-6">
+                        <div class="panel" id="{{_id}}">
+                            <div class="panel-heading">
+                                <strong>{{{name}}}</strong>
+                            </div>
+
+                            <p>I don't know <span class="badge pull-right">{{stats.0.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info" style="width: {{stats.0.percentage}}%;"></div>
+                            </div>
+
+                            <p>Strongly Agree <span class="badge pull-right">{{stats.1.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-primary" style="width: {{stats.1.percentage}}%"></div>
+                            </div>
+
+                            <p>Agree <span class="badge pull-right">{{stats.2.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" style="width: {{stats.2.percentage}}%"></div>
+                            </div>
+
+                            <p>Disagree <span class="badge pull-right">{{stats.3.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" style="width: {{stats.3.percentage}}%"></div>
+                            </div>
+
+                            <p>Strongly Disagree <span class="badge pull-right">{{stats.4.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-danger" style="width: {{stats.4.percentage}}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+            <h3>Project Smells Check</h3>
+
+            <div class="row">
+                {{#each projectSmells}}
+                    <div class="col-lg-6">
+                        <div class="panel" id="{{_id}}">
+                            <div class="panel-heading">
+                                <strong>{{{name}}}</strong>
+                            </div>
+
+                            <p>I don't know <span class="badge pull-right">{{stats.0.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info" style="width: {{stats.0.percentage}}%;"></div>
+                            </div>
+
+                            <p>Strongly Agree <span class="badge pull-right">{{stats.1.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-primary" style="width: {{stats.1.percentage}}%"></div>
+                            </div>
+
+                            <p>Agree <span class="badge pull-right">{{stats.2.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" style="width: {{stats.2.percentage}}%"></div>
+                            </div>
+
+                            <p>Disagree <span class="badge pull-right">{{stats.3.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" style="width: {{stats.3.percentage}}%"></div>
+                            </div>
+
+                            <p>Strongly Disagree <span class="badge pull-right">{{stats.4.total}}</span></p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-danger" style="width: {{stats.4.percentage}}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+
+            <hr class="page-break" />
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Last Actions' Completion Rate</h3>
+                </div>
+
+                <input type="textbox" value="{{retrospective.lastCompletionRate}}" id="lastCompletionRate" name="lastCompletionRate">
+            </div>
+
+
+            <hr class="page-break" />
+
+            <h2>Actions</h2>
+
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Rolled over &mdash; chase these!</h3>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Key Points</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-action-type="rolled">
+                            {{#unless retrospective.actions.rolled.length}}
+                            <tr>
+                                <td><textarea class="form-control item" name="actions.rolled.create.item" rows="5">{{item}}</textarea></td>
+                                <td><textarea class="form-control key-points" name="actions.rolled.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+                                <td><textarea class="form-control actions" name="actions.rolled.create.actions" rows="5">{{actions}}</textarea></td>
+                            </tr>
+                        {{/unless}}
+
+                        {{#each retrospective.actions.rolled}}
+                            <tr>
+                                <td><textarea class="form-control item" name="actions.rolled.{{_id}}.item" rows="5">{{item}}</textarea></td>
+                                <td><textarea class="form-control key-points" name="actions.rolled.{{_id}}.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+                                <td><textarea class="form-control actions" name="actions.rolled.{{_id}}.actions" rows="5">{{actions}}</textarea></td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="clearfix">
+                                <a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Good things &mdash; keep doing these!</h3>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Key Points</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-action-type="good">
+                        {{#unless retrospective.actions.good.length}}
+                            <tr>
+                                <td><textarea class="form-control item"       name="actions.good.create.item"      rows="5">{{item}}</textarea></td>
+                                <td><textarea class="form-control key-points" name="actions.good.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+                                <td><textarea class="form-control actions"    name="actions.good.create.actions"   rows="5">{{actions}}</textarea></td>
+                            </tr>
+                        {{/unless}}
+
+                        {{#each retrospective.actions.good}}
+                            <tr>
+                                <td><textarea class="form-control item"       name="actions.good.{{_id}}.item"      rows="5">{{item}}</textarea></td>
+                                <td><textarea class="form-control key-points" name="actions.good.{{_id}}.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+                                <td><textarea class="form-control actions"    name="actions.good.{{_id}}.actions"   rows="5">{{actions}}</textarea></td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="clearfix">
+                                <a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Bad things &mdash; stop it!</h3>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Key Points</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-action-type="bad">
+                        {{#unless retrospective.actions.bad.length}}
+                            <tr>
+                                <td><textarea class="form-control item"       name="actions.bad.create.item"      rows="5">{{item}}</textarea></td>
+                                <td><textarea class="form-control key-points" name="actions.bad.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+                                <td><textarea class="form-control actions"    name="actions.bad.create.actions"   rows="5">{{actions}}</textarea></td>
+                            </tr>
+                        {{/unless}}
+
+                        {{#each retrospective.actions.bad}}
+                            <tr>
+                                <td><textarea class="form-control item"       name="actions.bad.{{_id}}.item"      rows="5">{{item}}</textarea></td>
+                                <td><textarea class="form-control key-points" name="actions.bad.{{_id}}.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+                                <td><textarea class="form-control actions"    name="actions.bad.{{_id}}.actions"   rows="5">{{actions}}</textarea></td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="clearfix">
+                                <a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <input type="hidden" id="projectId" name="projectId" value="{{project._id}}">
+            <input type="hidden" id="retrospectiveId" name="retrospectiveId" value="{{retrospective._id}}">
+        </fieldset>
+
+        <fieldset class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container">
+                <a href="/project/{{project._id}}/retrospective/{{retrospective._id}}/print" class="btn btn-default navbar-btn pull-left" type="button">Short Version</a>
+                <button class="btn btn-primary navbar-btn pull-right" type="submit">Save Retrospective</button>
+            </div>
+        </fieldset>
+    </form>

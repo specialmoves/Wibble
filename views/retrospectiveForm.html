@@ -1,0 +1,76 @@
+
+    <!-- Retrospective Form -->
+
+    <form action="/project/{{project._id}}/retrospective/{{retrospective._id}}/form/save" method="post">
+        <fieldset>
+            <header class="page-header">
+                <ul class="breadcrumb">
+                    <li><a href="/">Projects</a></li>
+                    <li><a href="/project/{{project._id}}">{{project.name}}</a></li>
+                    <li><a href="/project/{{project._id}}/retrospective/{{retrospective._id}}">{{retrospectiveDate}}</a></li>
+                    <li class="active">{{title}}</li>
+                </ul>
+
+                <h1>{{title}}</h1>
+
+                <div class="form-group">
+                    <div class="input-group attendee-name">
+                        <span class="input-group-addon">Your Name:</span>
+                        <input type="text" class="form-control" id="participantName" name="participantName" placeholder="e.g. Dean Nolan">
+                    </div>
+                </div>
+            </header>
+            <p class="text-danger pull-left">{{#each errors}}{{msg}}, {{value}} {{/each}}<p>
+
+            <hr class="page-break" />
+
+            <h2>Project Health</h2>
+
+            <div class="row">
+                {{#each projectHealth}}
+                    <div class="col-lg-6">
+                        <div class="panel">
+                            <div class="panel-heading"><strong>{{{name}}}</strong></div>
+
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-info"   ><input type="radio" name="{{_id}}" value="0" />I Don't Know</label>
+                                <label class="btn btn-primary"><input type="radio" name="{{_id}}" value="1" />Strongly Agree</label>
+                                <label class="btn btn-success"><input type="radio" name="{{_id}}" value="2" />Agree</label>
+                                <label class="btn btn-warning"><input type="radio" name="{{_id}}" value="3" />Disagree</label>
+                                <label class="btn btn-danger" ><input type="radio" name="{{_id}}" value="4" />Strongly Disagree</label>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+            <hr class="page-break" />
+
+            <h2>Project Smells Check</h2>
+
+            <div class="row">
+                {{#each projectSmells}}
+                    <div class="col-lg-6">
+                        <div class="panel">
+                            <div class="panel-heading"><strong>{{{name}}}</strong></div>
+                            <p><em>{{{description}}}</em></p>
+
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-info"   ><input type="radio" name="{{_id}}" value="0" />I Don't Know</label>
+                                <label class="btn btn-primary"><input type="radio" name="{{_id}}" value="1" />Strongly Agree</label>
+                                <label class="btn btn-success"><input type="radio" name="{{_id}}" value="2" />Agree</label>
+                                <label class="btn btn-warning"><input type="radio" name="{{_id}}" value="3" />Disagree</label>
+                                <label class="btn btn-danger" ><input type="radio" name="{{_id}}" value="4" />Strongly Disagree</label>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </fieldset>
+
+        <fieldset class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container">
+                <button class="btn btn-primary navbar-btn pull-right" type="submit">Submit Feedback</button>
+            </div>
+        </fieldset>
+    </form>

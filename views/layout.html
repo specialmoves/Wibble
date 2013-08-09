@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+    {{> _header}}
+
+	<body class="body">
+
+		<div class="navbar">
+
+            <div class="container">
+
+                <a class="navbar-brand animated wobble" href="/">Wibble</a>
+
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="/admin">DB Admin</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+		<div class="container">
+	        {{{body}}}
+	    </div>
+
+        {{> _footer}}
+
+    </body>
+    
+</html>
