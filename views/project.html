@@ -66,7 +66,9 @@
                             </div>
                         </div>
 
-                        <p class="text-danger pull-left">{{#each errors}}{{msg}}, {{/each}}<p>
+                        <label class="control-label text-danger pull-left">
+                            {{#each errors}}{{msg}}{{/each}}
+                        </label>
 
                         <button type="submit" class="btn btn-primary btn-small pull-right"><i class="icon-plus"></i> Add Retrospective</button>
                     </div>
