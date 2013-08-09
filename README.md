@@ -16,7 +16,7 @@ Designed and built over three days, Wibble v0.1 is the MVP for what could potent
 - How To Run - 
 
 * You'll need Node.js and MongoDB to run this
-* <code>node velociraptr.js</code> will start the project (ciaran, can we code format that?)
+* <code>node app.js</code> will start the project (ciaran, can we code format that?)
 * On first run, click "DB Admin" in the top right to populate the Database for the first retrospective. If you don't do this, you won't be able to create your first retrospective.
 
 - Contact - 
