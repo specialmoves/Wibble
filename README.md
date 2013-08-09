@@ -3,7 +3,7 @@ Wibble
 
 Wibble v0.1
 
-Sniff out those project smells in your retrospective (Ciaran - that can be the tagline!)
+Sniff out those project smells in your retrospective
 
 Wibble is a simple tool to gather feedback from your team to generate insights for a Retrospective. It also has simple note taking so that you document your retrospective along with the insights.
 
