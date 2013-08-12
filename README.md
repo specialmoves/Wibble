@@ -22,4 +22,4 @@ Designed and built over three days, Wibble v0.1 is the MVP for what could potent
 
 ## Contact
 
-If you have any questions, suggestions or feedback at all then get in touch with sunil@specialmoves.com
+If you have any questions, suggestions or feedback at all then get in touch with wibble@specialmoves.com
