@@ -5,14 +5,14 @@ var moment = require('moment');
 var Question = require('../models/question');
 var DateHelper = require('../lib/dateHelper');
 var dateFormat = require('dateformat');
+var RetrospectiveHelper = require('../lib/retrospectiveHelper');
 
 // GET : /project/:projectId/retrospective/:retrospectiveId
 
 exports.viewRetrospective = function(req, res) {
 
     var project = req.project;
-
-    var retrospective = filterRetrospective(req, project);
+    var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
 
     var projectHealth = filterQuestions(retrospective, 'Project Health');
     var projectSmells = filterQuestions(retrospective, 'Project Smells Check');
@@ -33,46 +33,46 @@ function filterQuestions(collection, type) {
     });
 }
 
-function filterRetrospective(req, project) {
-    return project.retrospectives.filter(function(retro){
-        return retro._id == req.params.retrospectiveId;
-    })[0];
-}
-
 // POST : /project/:projectId/retrospective/:retrospectiveId
 
 exports.updateRetrospective = function(req, res, next){
 
+    Project.findOne({_id: req.body.projectId}, function(error, project){
 
-    project = req.project;
-
-    if (!project) {
-        return res.send('404 - Project Not Found', 404);
-    }
-        
-        var retrospective = filterRetrospective(req, project);
-
-    retrospective.lastCompletionRate = req.body.lastCompletionRate;
-
-    updateExistingRetrospectiveActions(retrospective.actions.bad, 'bad', req.body);
-    updateExistingRetrospectiveActions(retrospective.actions.good, 'good', req.body);
-    updateExistingRetrospectiveActions(retrospective.actions.rolled, 'rolled', req.body);
-
-    addNewActionsToRetrospective(retrospective.actions.bad, 'bad', req.body);
-    addNewActionsToRetrospective(retrospective.actions.good, 'good', req.body);
-    addNewActionsToRetrospective(retrospective.actions.rolled, 'rolled', req.body);
-
-    retrospective.participants.forEach(function(participant){
-        participant.attended = typeof req.body[participant._id] != "undefined";
-    });
-
-    retrospective.summary = req.body.retrospectiveSummary;
-
-    project.save(function(error){
-        if(error){
+        if (error) {
+            console.log('error getting project from db');
             return next(error);
         }
-        return res.redirect('/project/' + project._id + '/retrospective/' + retrospective._id);
+
+        if (!project) {
+            return res.send('404 - Project Not Found', 404);
+        }
+
+        var retrospective = RetrospectiveHelper.getRetrospectiveById(req.body.retrospectiveId, project);
+
+        retrospective.lastCompletionRate = req.body.lastCompletionRate;
+
+        updateExistingRetrospectiveActions(retrospective.actions.bad, 'bad', req.body);
+        updateExistingRetrospectiveActions(retrospective.actions.good, 'good', req.body);
+        updateExistingRetrospectiveActions(retrospective.actions.rolled, 'rolled', req.body);
+
+        addNewActionsToRetrospective(retrospective.actions.bad, 'bad', req.body);
+        addNewActionsToRetrospective(retrospective.actions.good, 'good', req.body);
+        addNewActionsToRetrospective(retrospective.actions.rolled, 'rolled', req.body);
+
+        retrospective.participants.forEach(function(participant){
+            participant.attended = typeof req.body[participant._id] != "undefined";
+        });
+
+        retrospective.summary = req.body.retrospectiveSummary;
+
+        project.save(function(error){
+            if(error){
+                return next(error);
+            }
+
+            return res.redirect('/project/' + project._id + '/retrospective/' + retrospective._id);
+        })
     });
 
 };
@@ -124,16 +124,16 @@ exports.viewRetrospectiveForm = function(req, res, next) {
     }
 
 	var project = req.project;
-    var retrospective = filterRetrospective(req, project);
+    var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
 
-    var validDate = moment(retrospective[0].date).format("MMM Do YYYY");
+    var validDate = moment(retrospective.date).format("MMM Do YYYY");
 
     res.render('retrospectiveForm', {
         title : pageTitle,
         projectHealth : req['project-health-questions'],
         projectSmells : req['project-smells-questions'],
         project : project,
-        retrospective : retrospective[0],
+        retrospective : retrospective,
         retrospectiveDate : validDate,
     });
 
@@ -161,7 +161,7 @@ exports.saveRetrospectiveForm = function(req, res, next) {
 
     if (!pageErrors) {
 
-        var retrospective = filterRetrospective(req, project);
+        var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
 
         retrospective.questions.forEach(function(question){
             question.answers.push({
@@ -179,7 +179,7 @@ exports.saveRetrospectiveForm = function(req, res, next) {
                 return next(error);
             }
 
-            return res.redirect('/project/' + req.params.projectId + '/retrospective/' + req.params.retrospectiveId);
+            return res.redirect('/project/' + project._id + '/retrospective/' + retrospective._id);
 
         });
 
@@ -192,7 +192,8 @@ exports.saveRetrospectiveForm = function(req, res, next) {
                 pageTitle += ' for user ' + formId;
             }
 
-            var retrospective = filterRetrospective(req, project);
+            var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
+
             var validDate = moment(retrospective.date).format("MMM Do YYYY");
 
             res.render('retrospectiveForm', {
@@ -206,7 +207,7 @@ exports.saveRetrospectiveForm = function(req, res, next) {
             });
 
     }
-};
+}
 
 // POST: /retrospective/create
 
@@ -230,7 +231,7 @@ exports.createRetrospective = function(req, res, next){
 
         if (!pageErrors) {
 
-            var retrospective = filterRetrospective(req, project);
+            var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
 
             project.retrospectives.push({
                 date: fullDate,
@@ -256,7 +257,7 @@ exports.createRetrospective = function(req, res, next){
 
         } else {
 
-            var retrospective = filterRetrospective(req, project);
+            var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
 
             return res.render('project', {
                 title: project.name,
@@ -283,10 +284,8 @@ exports.viewRetrospectiveShort = function(req, res){
     Project.findOne({_id: projectId}, function(error, project){
 
         project.retrospectives.sort(DateHelper.dateSortDesc);
-
-        var retrospective = project.retrospectives.filter(function(retro) {
-            return retro._id == req.params.retrospectiveId;
-        })[0];
+        
+        var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
 
         var participants = retrospective.participants.filter(function(participant) {
             return participant.attended == true;
