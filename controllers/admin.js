@@ -75,7 +75,7 @@ exports.addQuestions = function (req, res) {
 
 		{
 			category: 'Project Smells Check',
-			name: 'The team is focussed on the project',
+			name: 'The team is focused on the project',
 			description: 'People aren\'t always switching on/off the project and/or being distracted by other work',
 			order: 5
 		},
