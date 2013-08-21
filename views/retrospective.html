@@ -32,7 +32,7 @@
             <div class="row">
                 {{#each retrospective.participants}}
                 <div class="col-lg-6">
-                    <div class="input-group"> 
+                    <div class="input-group">
                         <span class="input-group-addon">
                             <input type="checkbox" name="{{_id}}" id="{{_id}}" value="" {{#if attended}}checked="checked"{{/if}}/>
                         </span>
@@ -79,8 +79,8 @@
 
                         {{#each retrospective.unansweredQuestions}}
                             <li class="list-group-item"><a href="#{{_id}}">{{name}}</a></li>
-                        {{/each}}  
-                 
+                        {{/each}}
+
                     </ul>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                     </thead>
 
                     <tbody data-action-type="rolled">
-                            {{#unless retrospective.actions.rolled.length}}
+                        {{#unless retrospective.actions.rolled.length}}
                             <tr>
                                 <td><textarea class="form-control item" name="actions.rolled.create.item" rows="5">{{item}}</textarea></td>
                                 <td><textarea class="form-control key-points" name="actions.rolled.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
@@ -218,7 +218,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="3" class="clearfix">
-                                <a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
+                                <a class="btn btn-default btn-small pull-right js-new-item"><span class="glyphicon glyphicon-plus"></span> Add another</a>
                             </td>
                         </tr>
                     </tfoot>
@@ -260,7 +260,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="3" class="clearfix">
-                                <a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
+                                <a class="btn btn-default btn-small pull-right js-new-item"><span class="glyphicon glyphicon-plus"></span> Add another</a>
                             </td>
                         </tr>
                     </tfoot>
@@ -302,20 +302,21 @@
                     <tfoot>
                         <tr>
                             <td colspan="3" class="clearfix">
-                                <a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
+                                <a class="btn btn-default btn-small pull-right js-new-item"><span class="glyphicon glyphicon-plus"></span> Add another</a>
                             </td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
 
-            <input type="hidden" id="projectId" name="projectId" value="{{project._id}}">
-            <input type="hidden" id="retrospectiveId" name="retrospectiveId" value="{{retrospective._id}}">
+            <input type="hidden" id="projectId" name="projectId" value="{{project._id}}" />
+            <input type="hidden" id="retrospectiveId" name="retrospectiveId" value="{{retrospective._id}}" />
         </fieldset>
 
         <fieldset class="navbar navbar-inverse navbar-fixed-bottom">
             <div class="container">
                 <a href="/project/{{project._id}}/retrospective/{{retrospective._id}}/print" class="btn btn-default navbar-btn pull-left" type="button">Short Version</a>
+
                 <button class="btn btn-primary navbar-btn pull-right" type="submit">Save Retrospective</button>
             </div>
         </fieldset>

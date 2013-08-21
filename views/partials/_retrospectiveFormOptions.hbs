@@ -1,0 +1,38 @@
+                    <tr>
+                        <th class="retrospective-options-heading">
+                            {{{name}}}
+
+                            {{#if description}}
+                                <span class="glyphicon glyphicon-question-sign retrospective-question-description" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover focus" data-html="true" data-content="{{{description}}}"></span>
+                            {{/if}}
+                        </th>
+
+                        <td class="retrospective-options">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn retrospective-option retrospective-option-strongly-disagree">
+                                    <input type="radio" name="{{_id}}" value="4" />
+                                    Strongly Disagree
+                                </label>
+
+                                <label class="btn retrospective-option retrospective-option-disagree">
+                                    <input type="radio" name="{{_id}}" value="3" />
+                                    Disagree
+                                </label>
+
+                                <label class="btn retrospective-option retrospective-option-agree">
+                                    <input type="radio" name="{{_id}}" value="2" />
+                                    Agree
+                                </label>
+
+                                <label class="btn retrospective-option retrospective-option-strongly-agree">
+                                    <input type="radio" name="{{_id}}" value="1" />
+                                    Strongly Agree
+                                </label>
+
+                                <label class="btn retrospective-option retrospective-option-dont-know">
+                                    <input type="radio" name="{{_id}}" value="0" />
+                                    Don't Know
+                                </label>
+                            </div>
+                        </td>
+                    </tr>

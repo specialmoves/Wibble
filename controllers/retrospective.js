@@ -116,16 +116,9 @@ function updateExistingRetrospectiveActions(retrospectiveActions, type, formPost
 
 exports.viewRetrospectiveForm = function(req, res, next) {
 
-    var formId = req.params.formId;
     var pageTitle = 'Retrospective Form';
-
-    if (formId) {
-        pageTitle += ' for user ' + formId;
-    }
-
 	var project = req.project;
     var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
-
     var validDate = moment(retrospective.date).format("MMM Do YYYY");
 
     res.render('retrospectiveForm', {
@@ -185,26 +178,26 @@ exports.saveRetrospectiveForm = function(req, res, next) {
 
     } else {
 
-            var formId = req.params.formId;
-            var pageTitle = 'Retrospective Form';
+        var formId = req.params.formId;
+        var pageTitle = 'Retrospective Form';
 
-            if (formId) {
-                pageTitle += ' for user ' + formId;
-            }
+        if (formId) {
+            pageTitle += ' for user ' + formId;
+        }
 
-            var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
+        var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
 
-            var validDate = moment(retrospective.date).format("MMM Do YYYY");
+        var validDate = moment(retrospective.date).format("MMM Do YYYY");
 
-            res.render('retrospectiveForm', {
-                title : pageTitle,
-                projectHealth : req['project-health-questions'],
-                projectSmells : req['project-smells-questions'],
-                project : project,
-                retrospective : retrospective,
-                retrospectiveDate : validDate,
-                errors: pageErrors
-            });
+        res.render('retrospectiveForm', {
+            title : pageTitle,
+            projectHealth : req['project-health-questions'],
+            projectSmells : req['project-smells-questions'],
+            project : project,
+            retrospective : retrospective,
+            retrospectiveDate : validDate,
+            errors: pageErrors
+        });
 
     }
 }
@@ -284,7 +277,7 @@ exports.viewRetrospectiveShort = function(req, res){
     Project.findOne({_id: projectId}, function(error, project){
 
         project.retrospectives.sort(DateHelper.dateSortDesc);
-        
+
         var retrospective = RetrospectiveHelper.getRetrospectiveById(req.params.retrospectiveId, project);
 
         var participants = retrospective.participants.filter(function(participant) {

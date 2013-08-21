@@ -20,52 +20,34 @@
                     </div>
                 </div>
             </header>
-            <p class="text-danger pull-left">{{#each errors}}{{msg}}, {{value}} {{/each}}<p>
 
-            <hr class="page-break" />
+            {{#if errors}}
+                <p class="text-danger pull-left">
+                    {{#each errors}}
+                        {{msg}}, {{value}}
+                    {{/each}}
+                </p>
+            {{/if}}
 
             <h2>Project Health</h2>
 
-            <div class="row">
-                {{#each projectHealth}}
-                    <div class="col-lg-6">
-                        <div class="panel">
-                            <div class="panel-heading"><strong>{{{name}}}</strong></div>
-
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-info"   ><input type="radio" name="{{_id}}" value="0" />I Don't Know</label>
-                                <label class="btn btn-primary"><input type="radio" name="{{_id}}" value="1" />Strongly Agree</label>
-                                <label class="btn btn-success"><input type="radio" name="{{_id}}" value="2" />Agree</label>
-                                <label class="btn btn-warning"><input type="radio" name="{{_id}}" value="3" />Disagree</label>
-                                <label class="btn btn-danger" ><input type="radio" name="{{_id}}" value="4" />Strongly Disagree</label>
-                            </div>
-                        </div>
-                    </div>
-                {{/each}}
-            </div>
-
-            <hr class="page-break" />
+            <table class="table table-hover retrospective-options-table">
+                <tbody>
+                    {{#each projectHealth}}
+{{> _retrospectiveFormOptions}}
+                    {{/each}}
+                </tbody>
+            </table>
 
             <h2>Project Smells Check</h2>
 
-            <div class="row">
-                {{#each projectSmells}}
-                    <div class="col-lg-6">
-                        <div class="panel">
-                            <div class="panel-heading"><strong>{{{name}}}</strong></div>
-                            <p><em>{{{description}}}</em></p>
-
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-info"   ><input type="radio" name="{{_id}}" value="0" />I Don't Know</label>
-                                <label class="btn btn-primary"><input type="radio" name="{{_id}}" value="1" />Strongly Agree</label>
-                                <label class="btn btn-success"><input type="radio" name="{{_id}}" value="2" />Agree</label>
-                                <label class="btn btn-warning"><input type="radio" name="{{_id}}" value="3" />Disagree</label>
-                                <label class="btn btn-danger" ><input type="radio" name="{{_id}}" value="4" />Strongly Disagree</label>
-                            </div>
-                        </div>
-                    </div>
-                {{/each}}
-            </div>
+            <table class="table table-hover retrospective-options-table">
+                <tbody>
+                    {{#each projectSmells}}
+{{> _retrospectiveFormOptions}}
+                    {{/each}}
+                </tbody>
+            </table>
         </fieldset>
 
         <fieldset class="navbar navbar-inverse navbar-fixed-bottom">
