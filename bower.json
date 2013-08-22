@@ -1,0 +1,12 @@
+{
+	"name":  "Wibble",
+	"version": "0.0.0",
+	"dependencies": {
+		"animate.css": "*",
+		"bootstrap": "3.0.0",
+		"flexText": "latest",
+		"font-awesome": "3.2.1",
+		"jquery": "2.0.3"
+	},
+	"private": true
+}

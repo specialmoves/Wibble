@@ -1,102 +1,79 @@
-
 <header class="page-header">
+	<img src="/images/logo-specialmoves.png" alt="specialmoves logo" class="visible-print">
 
-    <img src="/images/logo-specialmoves.png" alt="specialmoves logo" class="visible-print">
+	<ul class="breadcrumb hidden-print">
+		<li><a href="/">Project</a></li>
+		<li><a href="/project/{{project._id}}">{{project.name}}</a></li>
+		<li><a href="/project/{{project._id}}/retrospective/{{retrospective._id}}">{{format_date}}</a></li>
+		<li class="active">Print</li>
+	</ul>
 
-    <ul class="breadcrumb hidden-print">
-        <li><a href="/">Project</a></li>
-        <li><a href="/project/{{project._id}}">{{project.name}}</a></li>
-        <li><a href="/project/{{project._id}}/retrospective/{{retrospective._id}}">{{format_date}}</a></li>
-        <li class="active">Print</li>
-    </ul>
+	<h1>{{title}}: Retrospective</h1>
 
-    <h1>{{title}}: Retrospective</h1>
-    <span>{{format_date}}</span>
-    {{#if retrospective.summary}}
-    <p class="lead">{{retrospective.summary}}</p>
-    {{else}}
-    <p class="lead">Currently no Summary</p>
-    {{/if}}
+	<span>{{format_date}}</span>
 
-    <h4>Retrospective Health: <strong>{{retrospective.health}}%</strong> <span class="text-success"></span></h4>
-    <ul class="text-muted">
-        <li>0% - Major Problems</li>
-        <li>100% = Smooth Sailing</li>
-    </ul>
+	{{#if retrospective.summary}}
+		<p class="lead">{{retrospective.summary}}</p>
+	{{else}}
+		<p class="lead">Currently no Summary</p>
+	{{/if}}
 
+	<h4>Retrospective Health: <strong>{{retrospective.health}}%</strong> <span class="text-success"></span></h4>
+
+	<ul class="text-muted">
+		<li>0%: Major Problems</li>
+		<li>100%: Smooth Sailing</li>
+	</ul>
 </header>
 
 <div class="panel panel-success">
-    <div class="panel-heading">
-        <h3 class="panel-title">Good things &mdash; keep doing these!</h3>
-    </div>
+	<div class="panel-heading">
+		<h3 class="panel-title">Good things &mdash; keep doing these!</h3>
+	</div>
 
-    <table class="table">
-
-        <tbody data-action-type="good">
-
-            {{#each retrospective.actions.good}}
-
-            <tr>
-                <td>
-                    <textarea class="form-control item" name="actions.good.create.item">{{item}}</textarea>
-                </td>
-
-                <td>
-                    <textarea class="form-control actions" name="actions.good.create.actions">{{actions}}</textarea>
-                </td>
-            </tr>
-
-            {{/each}}
-
-        </tbody>
-
-    </table>
-
+	<div class="panel-body">
+		<table class="table">
+			<tbody data-action-type="good">
+				{{#each retrospective.actions.good}}
+					<tr>
+						<td><textarea class="form-control item" name="actions.good.create.item">{{item}}</textarea></td>
+						<td><textarea class="form-control actions" name="actions.good.create.actions">{{actions}}</textarea></td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </div>
 
-
 <div class="panel panel-danger">
-    <div class="panel-heading">
-        <h3 class="panel-title">Bad things &mdash; stop it!</h3>
-    </div>
+	<div class="panel-heading">
+		<h3 class="panel-title">Bad things &mdash; stop it!</h3>
+	</div>
 
-    <table class="table">
-
-        <tbody data-action-type="bad">
-
-            {{#each retrospective.actions.bad}}
-
-            <tr>
-                <td>
-                    <textarea class="form-control item" name="actions.good.create.item"contentEditable>{{item}}</textarea>
-                </td>
-
-                <td>
-                    <textarea class="form-control actions" name="actions.good.create.actions"contentEditable>{{actions}}</textarea>
-                </td>
-            </tr>
-
-            {{/each}}
-
-        </tbody>
-    </table>
+	<div class="panel-body">
+		<table class="table">
+			<tbody data-action-type="bad">
+				{{#each retrospective.actions.bad}}
+					<tr>
+						<td><textarea class="form-control item" name="actions.good.create.item"contentEditable>{{item}}</textarea></td>
+						<td><textarea class="form-control actions" name="actions.good.create.actions"contentEditable>{{actions}}</textarea></td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </div>
 
 <h4>Previous actions completion rate: {{retrospective.lastCompletionRate}}</h4>
-<!--
-<span class="text-muted">* this is the first retrospective</span>
--->
 
 <h4>Attendance:</h4>
+
 <ul class="list-group">
-    {{#unless participants.length}}
-         <li class="list-group-item">No feedback yet</li>
-    {{/unless}}
-    {{#each participants}}
-    <li class="list-group-item">{{name}}</li>
-    {{/each}}
+	{{#unless participants.length}}
+		 <li class="list-group-item">No feedback yet</li>
+	{{/unless}}
+
+	{{#each participants}}
+		<li class="list-group-item">{{name}}</li>
+	{{/each}}
 </ul>
-
-<input type="hidden" id="projectId" name="projectId" value="{{project._id}}">
-

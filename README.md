@@ -14,11 +14,15 @@ Designed and built over three days, Wibble v0.1 is the MVP for what could potent
 
 ## How To Run Wibble
 
-* You'll need [Node.js](nodejs.org) and [MongoDB](http://www.mongodb.org/) installed on your machine
-* In the project directory run `npm install` this will install any packages needed by the project
-* Make sure you start your Mongo process before trying to run the server
-* `node app.js` will start the project (or use [nodemon](https://github.com/remy/nodemon) to avoid manual server restarts)
-* On first run, click "DB Admin" in the top right to populate the Database for the first retrospective. If you don't do this, you won't be able to create your first retrospective.
+* In your Terminal or Command Prompt, `cd` to the directory where Wibble lives on your computer
+* Install the project's Node.js dependencies by running `npm install`
+* Make sure you have the necessary JavaScript and CSS libraries for the UI by running `bower install` - they should already be in the repo, but run this anyway just in case
+* Start your MongoDB process so Wibble has a database to work with
+* And finally run `node app.js` to start the server (or use [nodemon](https://github.com/remy/nodemon) to avoid manual server restarts)
+
+That should be everything! By default your Wibble server will have started at _http://localhost:3000_ - open this address in your web browser, and Wibble should be up and running!
+
+**IMPORTANT:** Before you get started with creating retrospectives, click the "_DB Admin_" link in the header and populate the Database with the initial data required to get to work!
 
 ## Contact
 
