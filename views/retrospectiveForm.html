@@ -1,58 +1,56 @@
+		<!-- Retrospective Form -->
+		<form action="/project/{{project._id}}/retrospective/{{retrospective._id}}/form/save" method="post">
+			<fieldset>
+				<header class="page-header">
+					<ul class="breadcrumb">
+						<li><a href="/">Projects</a></li>
+						<li><a href="/project/{{project._id}}">{{project.name}}</a></li>
+						<li><a href="/project/{{project._id}}/retrospective/{{retrospective._id}}">{{retrospectiveDate}}</a></li>
+						<li class="active">{{title}}</li>
+					</ul>
 
-    <!-- Retrospective Form -->
+					<h1>{{title}}</h1>
 
-    <form action="/project/{{project._id}}/retrospective/{{retrospective._id}}/form/save" method="post">
-        <fieldset>
-            <header class="page-header">
-                <ul class="breadcrumb">
-                    <li><a href="/">Projects</a></li>
-                    <li><a href="/project/{{project._id}}">{{project.name}}</a></li>
-                    <li><a href="/project/{{project._id}}/retrospective/{{retrospective._id}}">{{retrospectiveDate}}</a></li>
-                    <li class="active">{{title}}</li>
-                </ul>
+					<div class="form-group">
+						<div class="input-group attendee-name">
+							<span class="input-group-addon">Your Name:</span>
+							<input type="text" class="form-control" id="participantName" name="participantName" placeholder="e.g. Dean Nolan">
+						</div>
+					</div>
+				</header>
 
-                <h1>{{title}}</h1>
+				{{#if errors}}
+					<p class="text-danger pull-left">
+						{{#each errors}}
+							{{msg}}, {{value}}
+						{{/each}}
+					</p>
+				{{/if}}
 
-                <div class="form-group">
-                    <div class="input-group attendee-name">
-                        <span class="input-group-addon">Your Name:</span>
-                        <input type="text" class="form-control" id="participantName" name="participantName" placeholder="e.g. Dean Nolan">
-                    </div>
-                </div>
-            </header>
+				<h2>Project Health</h2>
 
-            {{#if errors}}
-                <p class="text-danger pull-left">
-                    {{#each errors}}
-                        {{msg}}, {{value}}
-                    {{/each}}
-                </p>
-            {{/if}}
-
-            <h2>Project Health</h2>
-
-            <table class="table table-hover retrospective-options-table">
-                <tbody>
-                    {{#each projectHealth}}
+				<table class="table table-hover retrospective-options-table">
+					<tbody>
+						{{#each projectHealth}}
 {{> _retrospectiveFormOptions}}
-                    {{/each}}
-                </tbody>
-            </table>
+						{{/each}}
+					</tbody>
+				</table>
 
-            <h2>Project Smells Check</h2>
+				<h2>Project Smells Check</h2>
 
-            <table class="table table-hover retrospective-options-table">
-                <tbody>
-                    {{#each projectSmells}}
+				<table class="table table-hover retrospective-options-table">
+					<tbody>
+						{{#each projectSmells}}
 {{> _retrospectiveFormOptions}}
-                    {{/each}}
-                </tbody>
-            </table>
-        </fieldset>
+						{{/each}}
+					</tbody>
+				</table>
+			</fieldset>
 
-        <fieldset class="navbar navbar-inverse navbar-fixed-bottom">
-            <div class="container">
-                <button class="btn btn-primary navbar-btn pull-right" type="submit">Submit Feedback</button>
-            </div>
-        </fieldset>
-    </form>
+			<fieldset class="navbar navbar-inverse navbar-fixed-bottom">
+				<div class="container">
+					<button class="btn btn-primary navbar-btn pull-right" type="submit">Submit Feedback</button>
+				</div>
+			</fieldset>
+		</form>
