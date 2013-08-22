@@ -5,29 +5,34 @@
 								</div>
 
 								<div class="panel-body">
-									<p>I don't know <span class="badge pull-right">{{stats.0.total}}</span></p>
-									<div class="progress">
-										<div class="progress-bar progress-bar-info" style="width: {{stats.0.percentage}}%;"></div>
-									</div>
+									<p>Strongly Disagree <span class="badge pull-right">{{stats.4.total}}</span></p>
 
-									<p>Strongly Agree <span class="badge pull-right">{{stats.1.total}}</span></p>
 									<div class="progress">
-										<div class="progress-bar progress-bar-primary" style="width: {{stats.1.percentage}}%"></div>
-									</div>
-
-									<p>Agree <span class="badge pull-right">{{stats.2.total}}</span></p>
-									<div class="progress">
-										<div class="progress-bar progress-bar-success" style="width: {{stats.2.percentage}}%"></div>
+										<div class="progress-bar retrospective-progress-strongly-disagree" style="width: {{stats.4.percentage}}%"></div>
 									</div>
 
 									<p>Disagree <span class="badge pull-right">{{stats.3.total}}</span></p>
+
 									<div class="progress">
-										<div class="progress-bar progress-bar-warning" style="width: {{stats.3.percentage}}%"></div>
+										<div class="progress-bar retrospective-progress-disagree" style="width: {{stats.3.percentage}}%"></div>
 									</div>
 
-									<p>Strongly Disagree <span class="badge pull-right">{{stats.4.total}}</span></p>
+									<p>Agree <span class="badge pull-right">{{stats.2.total}}</span></p>
+
 									<div class="progress">
-										<div class="progress-bar progress-bar-danger" style="width: {{stats.4.percentage}}%"></div>
+										<div class="progress-bar retrospective-progress-agree" style="width: {{stats.2.percentage}}%"></div>
+									</div>
+
+									<p>Strongly Agree <span class="badge pull-right">{{stats.1.total}}</span></p>
+
+									<div class="progress">
+										<div class="progress-bar retrospective-progress-strongly-agree" style="width: {{stats.1.percentage}}%"></div>
+									</div>
+
+									<p>I don't know <span class="badge pull-right">{{stats.0.total}}</span></p>
+
+									<div class="progress">
+										<div class="progress-bar retrospective-progress-dont-know" style="width: {{stats.0.percentage}}%;"></div>
 									</div>
 								</div>
 							</div>

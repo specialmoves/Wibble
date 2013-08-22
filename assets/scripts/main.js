@@ -3,7 +3,7 @@
 $('.js-new-item').on('click', function (event) {
 	event.preventDefault();
 
-	var parentTableBody = $(this).closest('table').find('tbody');
+	var parentTableBody = $(this).parent().prev().find('table tbody');
 	var newItemRowHTML = parentTableBody.find('tr:first-child').clone();
 
 	newItemRowHTML.find('textarea').val('');
@@ -18,5 +18,3 @@ $('.js-new-item').on('click', function (event) {
 });
 
 $('.retrospective-question-description').popover();
-
-$('textarea').flexText();

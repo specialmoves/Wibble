@@ -124,41 +124,39 @@
 						<h3 class="panel-title">Rolled over &mdash; chase these!</h3>
 					</div>
 
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Key Points</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-
-						<tbody data-action-type="rolled">
-							{{#unless retrospective.actions.rolled.length}}
+					<div class="panel-body">
+						<table class="table">
+							<thead>
 								<tr>
-									<td><textarea class="form-control item" name="actions.rolled.create.item" rows="5">{{item}}</textarea></td>
-									<td><textarea class="form-control key-points" name="actions.rolled.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
-									<td><textarea class="form-control actions" name="actions.rolled.create.actions" rows="5">{{actions}}</textarea></td>
+									<th>Item</th>
+									<th>Key Points</th>
+									<th>Actions</th>
 								</tr>
-							{{/unless}}
+							</thead>
 
-							{{#each retrospective.actions.rolled}}
-								<tr>
-									<td><textarea class="form-control item" name="actions.rolled.{{_id}}.item" rows="5">{{item}}</textarea></td>
-									<td><textarea class="form-control key-points" name="actions.rolled.{{_id}}.keyPoints" rows="5">{{keyPoints}}</textarea></td>
-									<td><textarea class="form-control actions" name="actions.rolled.{{_id}}.actions" rows="5">{{actions}}</textarea></td>
-								</tr>
-							{{/each}}
-						</tbody>
+							<tbody data-action-type="rolled">
+								{{#unless retrospective.actions.rolled.length}}
+									<tr>
+										<td><textarea class="form-control item" name="actions.rolled.create.item" rows="5">{{item}}</textarea></td>
+										<td><textarea class="form-control key-points" name="actions.rolled.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+										<td><textarea class="form-control actions" name="actions.rolled.create.actions" rows="5">{{actions}}</textarea></td>
+									</tr>
+								{{/unless}}
 
-						<tfoot>
-							<tr>
-								<td colspan="3" class="clearfix">
-									<a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
+								{{#each retrospective.actions.rolled}}
+									<tr>
+										<td><textarea class="form-control item" name="actions.rolled.{{_id}}.item" rows="5">{{item}}</textarea></td>
+										<td><textarea class="form-control key-points" name="actions.rolled.{{_id}}.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+										<td><textarea class="form-control actions" name="actions.rolled.{{_id}}.actions" rows="5">{{actions}}</textarea></td>
+									</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+
+					<div class="panel-footer clearfix">
+						<a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
+					</div>
 				</div>
 
 				<div class="panel panel-success">
@@ -166,41 +164,39 @@
 						<h3 class="panel-title">Good things &mdash; keep doing these!</h3>
 					</div>
 
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Key Points</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-
-						<tbody data-action-type="good">
-							{{#unless retrospective.actions.good.length}}
+					<div class="panel-body">
+						<table class="table">
+							<thead>
 								<tr>
-									<td><textarea class="form-control item"       name="actions.good.create.item"      rows="5">{{item}}</textarea></td>
-									<td><textarea class="form-control key-points" name="actions.good.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
-									<td><textarea class="form-control actions"    name="actions.good.create.actions"   rows="5">{{actions}}</textarea></td>
+									<th>Item</th>
+									<th>Key Points</th>
+									<th>Actions</th>
 								</tr>
-							{{/unless}}
+							</thead>
 
-							{{#each retrospective.actions.good}}
-								<tr>
-									<td><textarea class="form-control item"       name="actions.good.{{_id}}.item"      rows="5">{{item}}</textarea></td>
-									<td><textarea class="form-control key-points" name="actions.good.{{_id}}.keyPoints" rows="5">{{keyPoints}}</textarea></td>
-									<td><textarea class="form-control actions"    name="actions.good.{{_id}}.actions"   rows="5">{{actions}}</textarea></td>
-								</tr>
-							{{/each}}
-						</tbody>
+							<tbody data-action-type="good">
+								{{#unless retrospective.actions.good.length}}
+									<tr>
+										<td><textarea class="form-control item"       name="actions.good.create.item"      rows="5">{{item}}</textarea></td>
+										<td><textarea class="form-control key-points" name="actions.good.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+										<td><textarea class="form-control actions"    name="actions.good.create.actions"   rows="5">{{actions}}</textarea></td>
+									</tr>
+								{{/unless}}
 
-						<tfoot>
-							<tr>
-								<td colspan="3" class="clearfix">
-									<a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
+								{{#each retrospective.actions.good}}
+									<tr>
+										<td><textarea class="form-control item"       name="actions.good.{{_id}}.item"      rows="5">{{item}}</textarea></td>
+										<td><textarea class="form-control key-points" name="actions.good.{{_id}}.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+										<td><textarea class="form-control actions"    name="actions.good.{{_id}}.actions"   rows="5">{{actions}}</textarea></td>
+									</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+
+					<div class="panel-footer clearfix">
+						<a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
+					</div>
 				</div>
 
 				<div class="panel panel-danger">
@@ -208,41 +204,39 @@
 						<h3 class="panel-title">Bad things &mdash; stop it!</h3>
 					</div>
 
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Key Points</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-
-						<tbody data-action-type="bad">
-							{{#unless retrospective.actions.bad.length}}
+					<div class="panel-body">
+						<table class="table">
+							<thead>
 								<tr>
-									<td><textarea class="form-control item"       name="actions.bad.create.item"      rows="5">{{item}}</textarea></td>
-									<td><textarea class="form-control key-points" name="actions.bad.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
-									<td><textarea class="form-control actions"    name="actions.bad.create.actions"   rows="5">{{actions}}</textarea></td>
+									<th>Item</th>
+									<th>Key Points</th>
+									<th>Actions</th>
 								</tr>
-							{{/unless}}
+							</thead>
 
-							{{#each retrospective.actions.bad}}
-								<tr>
-									<td><textarea class="form-control item"       name="actions.bad.{{_id}}.item"      rows="5">{{item}}</textarea></td>
-									<td><textarea class="form-control key-points" name="actions.bad.{{_id}}.keyPoints" rows="5">{{keyPoints}}</textarea></td>
-									<td><textarea class="form-control actions"    name="actions.bad.{{_id}}.actions"   rows="5">{{actions}}</textarea></td>
-								</tr>
-							{{/each}}
-						</tbody>
+							<tbody data-action-type="bad">
+								{{#unless retrospective.actions.bad.length}}
+									<tr>
+										<td><textarea class="form-control item"       name="actions.bad.create.item"      rows="5">{{item}}</textarea></td>
+										<td><textarea class="form-control key-points" name="actions.bad.create.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+										<td><textarea class="form-control actions"    name="actions.bad.create.actions"   rows="5">{{actions}}</textarea></td>
+									</tr>
+								{{/unless}}
 
-						<tfoot>
-							<tr>
-								<td colspan="3" class="clearfix">
-									<a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
+								{{#each retrospective.actions.bad}}
+									<tr>
+										<td><textarea class="form-control item"       name="actions.bad.{{_id}}.item"      rows="5">{{item}}</textarea></td>
+										<td><textarea class="form-control key-points" name="actions.bad.{{_id}}.keyPoints" rows="5">{{keyPoints}}</textarea></td>
+										<td><textarea class="form-control actions"    name="actions.bad.{{_id}}.actions"   rows="5">{{actions}}</textarea></td>
+									</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+
+					<div class="panel-footer clearfix">
+						<a class="btn btn-default btn-small pull-right js-new-item"><i class="icon-plus"></i> Add another</a>
+					</div>
 				</div>
 
 				<input type="hidden" id="projectId" name="projectId" value="{{project._id}}" />
