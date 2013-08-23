@@ -1,0 +1,13 @@
+{
+  "name": "flexText",
+  "homepage": "https://github.com/alexdunphy/flexText",
+  "_release": "44f49bf507",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "44f49bf507a15d7700037e5734293ce807e78b2f"
+  },
+  "_source": "git://github.com/alexdunphy/flexText.git",
+  "_target": "*",
+  "_originalSource": "flexText"
+}
