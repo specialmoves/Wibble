@@ -1,82 +1,82 @@
-	<!-- Projects Page -->
-	<ul class="breadcrumb">
-		<li><a href="/">Projects</a></li>
-		<li class="active">{{title}}</li>
-	</ul>
+		<!-- Projects Page -->
+		<ul class="breadcrumb">
+			<li><a href="/">Projects</a></li>
+			<li class="active">{{title}}</li>
+		</ul>
 
-	<header class="page-header">
-		<h1>{{title}} <small>Project Health: <strong>{{project.health.amount}}%</strong> <span class="text-success">({{project.health.variation}}%)</span></small></h1>
-	</header>
+		<header class="page-header">
+			<h1>{{title}} <small>Project Health: <strong>{{project.health.amount}}%</strong> <span class="text-success">({{project.health.variation}}%)</span></small></h1>
+		</header>
 
-	<!-- List of Retrospectives -->
-	<h2>Retrospectives</h2>
+		<!-- List of Retrospectives -->
+		<h2>Retrospectives</h2>
 
-	<div class="row">
-		<div class="col-lg-6">
-			<ul class="list-group list-retrospectives">
-				{{#if project.retrospectives}}
-					{{#each project.retrospectives}}
-					<li class="list-group-item">
-						<a href="/project/{{../project._id}}/retrospective/{{_id}}">
-							<h4 class="list-group-item-heading">{{{format_date}}}</h4>
-						</a>
-						<p class="list-group-item-text text-muted">{{#if summary}}{{summary}}{{else}}<span class="text-danger">no summary</span>{{/if}}</p>
-					</li>
-					{{/each}}
-				{{else}}
-					<div class="panel panel-info">
-						There are currently no retrospectives for this project.
-					</div>
-				{{/if}}
-			</ul>
-		</div>
-
-		<div class="col-lg-6">
-			<!-- Create New Retrospective -->
-			<form method="post" action="/retrospective/create" class="form form-retrospective form-horizontal">
-				<fieldset>
-					<input type="hidden" id="projectId" name="projectId" value="{{project._id}}">
-
-					<div class="panel panel-default clearfix">
-						<div class="panel-heading">
-							<h3 class="panel-title">Add New Retrospective</h3>
+		<div class="row">
+			<div class="col-lg-6">
+				<ul class="list-group list-retrospectives">
+					{{#if project.retrospectives}}
+						{{#each project.retrospectives}}
+						<li class="list-group-item">
+							<a href="/project/{{../project._id}}/retrospective/{{_id}}">
+								<h4 class="list-group-item-heading">{{{format_date}}}</h4>
+							</a>
+							<p class="list-group-item-text text-muted">{{#if summary}}{{summary}}{{else}}<span class="text-danger">no summary</span>{{/if}}</p>
+						</li>
+						{{/each}}
+					{{else}}
+						<div class="panel panel-info">
+							There are currently no retrospectives for this project.
 						</div>
+					{{/if}}
+				</ul>
+			</div>
 
-						<div class="panel-body">
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Date</label>
+			<div class="col-lg-6">
+				<!-- Create New Retrospective -->
+				<form method="post" action="/retrospective/create" class="form form-retrospective form-horizontal">
+					<fieldset>
+						<input type="hidden" id="projectId" name="projectId" value="{{project._id}}">
 
-								<div class="col-lg-3"><select class="form-control" name="date" >{{{date_options}}} </select></div>
-								<div class="col-lg-3"><select class="form-control" name="month">{{{month_options}}}</select></div>
-								<div class="col-lg-4"><select class="form-control" name="year" >{{{year_options}}} </select></div>
+						<div class="panel panel-default clearfix">
+							<div class="panel-heading">
+								<h3 class="panel-title">Add New Retrospective</h3>
 							</div>
 
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Facilitator</label>
+							<div class="panel-body">
+								<div class="form-group">
+									<label class="col-lg-2 control-label">Date</label>
 
-								<div class="col-lg-10">
-
-									{{#if errors}}
-										{{#each errors}}
-									<input type="text" class="form-control" name="facilitator" value="{{value}}" placeholder="e.g Kenny Loggins" />
-										{{/each}}
-									{{else}}
-									<input type="text" class="form-control" name="facilitator" placeholder="e.g Kenny Loggins" />
-									{{/if}}
+									<div class="col-lg-3"><select class="form-control" name="date" >{{{date_options}}} </select></div>
+									<div class="col-lg-3"><select class="form-control" name="month">{{{month_options}}}</select></div>
+									<div class="col-lg-4"><select class="form-control" name="year" >{{{year_options}}} </select></div>
 								</div>
+
+								<div class="form-group">
+									<label class="col-lg-2 control-label">Facilitator</label>
+
+									<div class="col-lg-10">
+
+										{{#if errors}}
+											{{#each errors}}
+										<input type="text" class="form-control" name="facilitator" value="{{value}}" placeholder="e.g Kenny Loggins" />
+											{{/each}}
+										{{else}}
+										<input type="text" class="form-control" name="facilitator" placeholder="e.g Kenny Loggins" />
+										{{/if}}
+									</div>
+								</div>
+
+								<label class="control-label text-danger pull-left">
+									{{#each errors}}{{msg}}{{/each}}
+								</label>
+
+								<button type="submit" class="btn btn-primary btn-small pull-right"><span class="glyphicon glyphicon-plus"></span> Add Retrospective</button>
 							</div>
-
-							<label class="control-label text-danger pull-left">
-								{{#each errors}}{{msg}}{{/each}}
-							</label>
-
-							<button type="submit" class="btn btn-primary btn-small pull-right"><span class="glyphicon glyphicon-plus"></span> Add Retrospective</button>
 						</div>
-					</div>
-				</fieldset>
-			</form>
+					</fieldset>
+				</form>
+			</div>
 		</div>
-	</div>
 
-	<!-- Project Health Graph -->
-	<div class="graph"></div>
+		<!-- Project Health Graph -->
+		<div class="graph"></div>
