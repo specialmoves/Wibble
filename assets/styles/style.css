@@ -10,19 +10,17 @@ Gloabl Styles
 
 ---------- INDEX ----------
 
-
 body
-.navbar-brand
 .form
 .form-control
-.page-header 
+.page-header
 .page-break
-.btn 
+.btn
 .btn-group .btn
-.btn-group .btn + .btn 
+.btn-group .btn + .btn
 .btn-group .btn.active
-.col-lg-6 
-.col-lg-6:nth-child(odd) 
+.col-lg-6
+.col-lg-6:nth-child(odd)
 .error-date
 .list-group
 .list-group-attendees li
@@ -50,26 +48,83 @@ body {
   height: 1px;
   margin: 30px 0; }
 
-.btn:hover {
-  transition: all 100ms ease-in-out; }
+.retrospective-options-table tbody > tr > .retrospective-options-heading {
+  line-height: 49px;
+  padding: 0 8px;
+  width: 50%; }
+.retrospective-options-table tbody > tr > .retrospective-options {
+  text-align: right;
+  width: 50%; }
 
-.btn-group .btn {
-  border: 0; }
-  .btn-group .btn.active {
-    box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.25); }
-.btn-group .btn + .btn {
-  margin-left: 0; }
+.btn {
+  transition: all 300ms ease-in-out; }
+
+.retrospective-option-dont-know {
+  background-color: rgba(170, 170, 170, 0.25);
+  color: #909090; }
+  .retrospective-option-dont-know:hover, .retrospective-option-dont-know:focus {
+    background-color: rgba(170, 170, 170, 0.5);
+    color: #777777; }
+  .retrospective-option-dont-know.active {
+    background-color: #aaaaaa; }
+
+.retrospective-option-strongly-disagree {
+  background-color: rgba(217, 83, 79, 0.25);
+  color: #c9302c; }
+  .retrospective-option-strongly-disagree:hover, .retrospective-option-strongly-disagree:focus {
+    background-color: rgba(217, 83, 79, 0.5);
+    color: #a02622; }
+  .retrospective-option-strongly-disagree.active {
+    background-color: #d9534f; }
+
+.retrospective-option-disagree {
+  background-color: rgba(228, 134, 131, 0.25);
+  color: #db5d59; }
+  .retrospective-option-disagree:hover, .retrospective-option-disagree:focus {
+    background-color: rgba(228, 134, 131, 0.5);
+    color: #d2342f; }
+  .retrospective-option-disagree.active {
+    background-color: #e48683; }
+
+.retrospective-option-agree {
+  background-color: rgba(116, 170, 216, 0.25);
+  color: #4c92cd; }
+  .retrospective-option-agree:hover, .retrospective-option-agree:focus {
+    background-color: rgba(116, 170, 216, 0.5);
+    color: #3278b4; }
+  .retrospective-option-agree.active {
+    background-color: #74aad8; }
+
+.retrospective-option-strongly-agree {
+  background-color: rgba(66, 139, 202, 0.25);
+  color: #3071a9; }
+  .retrospective-option-strongly-agree:hover, .retrospective-option-strongly-agree:focus {
+    background-color: rgba(66, 139, 202, 0.5);
+    color: #245682; }
+  .retrospective-option-strongly-agree.active {
+    background-color: #428bca; }
+
+.btn-group .retrospective-option {
+  border: 0;
+  cursor: pointer; }
+  .btn-group .retrospective-option:last-child:not(:first-child):not(.dropdown-toggle) {
+    border-radius: 5px;
+    margin-left: 5px; }
+  .btn-group .retrospective-option:not(:first-child):not(:last-child):not(.dropdown-toggle):nth-child(4) {
+    border-radius: 0 5px 5px 0; }
+  .btn-group .retrospective-option.active {
+    color: #fff; }
+  .btn-group .retrospective-option + .retrospective-option {
+    margin: 0; }
 
 .col-lg-6 {
   margin: 0 0 10px 0; }
   .col-lg-6:nth-child(odd) {
     clear: both; }
 
-/* Project Overview Template */
 .error-date {
   color: #b94a48; }
 
-/* Retrospective View Template */
 .list-group.list-group-attendees li .feedback-link {
   display: none; }
 .list-group.list-group-attendees li:hover .feedback-link {
@@ -85,12 +140,10 @@ body {
   .progress:last-child {
     margin-bottom: 0; }
 
-/* Retrospective Form Template */
 .attendee-name,
 .question {
   margin-bottom: 20px; }
 
-/* Media Queries */
 @media print {
   body {
     font-size: 1.5em;
