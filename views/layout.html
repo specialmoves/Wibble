@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html>
-
-    {{> _header}}
-
+{{> _header}}
 	<body class="body">
-
 		<div class="navbar navbar-default">
+			<div class="container">
+				<a class="navbar-brand animated wobble" href="/">Wibble</a>
 
-            <div class="container">
-
-                <a class="navbar-brand animated wobble" href="/">Wibble</a>
-
-                <ul class="nav navbar-nav pull-right">
-                    <li><a href="/admin">DB Admin</a></li>
-                </ul>
-
-            </div>
-        </div>
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="/admin">DB Admin</a></li>
+				</ul>
+			</div>
+		</div>
 
 		<div class="container">
-	        {{{body}}}
-	    </div>
+{{{body}}}
+		</div>
 
-        {{> _footer}}
-
-    </body>
-
+{{> _footer}}
+	</body>
 </html>

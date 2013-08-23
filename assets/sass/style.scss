@@ -164,6 +164,14 @@ $buttonColors: #aaa, #d9534f, #e48683, #74aad8, #428bca;
 	}
 }
 
+	@each $buttonClass in $buttonClasses {
+		$i: index($buttonClasses, $buttonClass);
+
+		.retrospective-progress-#{$buttonClass} {
+			background-color: nth($buttonColors, $i);
+		}
+	}
+
 // Retrospective Form Template
 
 .attendee-name,

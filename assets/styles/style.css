@@ -140,6 +140,21 @@ body {
   .progress:last-child {
     margin-bottom: 0; }
 
+.retrospective-progress-dont-know {
+  background-color: #aaaaaa; }
+
+.retrospective-progress-strongly-disagree {
+  background-color: #d9534f; }
+
+.retrospective-progress-disagree {
+  background-color: #e48683; }
+
+.retrospective-progress-agree {
+  background-color: #74aad8; }
+
+.retrospective-progress-strongly-agree {
+  background-color: #428bca; }
+
 .attendee-name,
 .question {
   margin-bottom: 20px; }

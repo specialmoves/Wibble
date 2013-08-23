@@ -1,20 +1,18 @@
-    <!-- admin -->
+		<!-- admin -->
+		<header class="page-header">
+			<h1>{{title}}</h1>
+		</header>
 
-    <header class="page-header">
-        <h1>{{title}}</h1>
-    </header>
-
-    <!-- Create List of questions -->
-    {{#if showButton}}
-        <form method="post" action="/admin/questions/add">
-            <fieldset>
-                <legend>Populate DB with Questions</legend>
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Go</button>
-            </fieldset>
-        </form>
-    {{else}}
-        <div class="alert alert-info text-center">
-            Database already populated!
-        </div>
-    {{/if}}
-
+		<!-- Create List of questions -->
+		{{#if showButton}}
+			<form method="post" action="/admin/questions/add">
+				<fieldset>
+					<legend>Populate DB with Questions</legend>
+					<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Go</button>
+				</fieldset>
+			</form>
+		{{else}}
+			<div class="alert alert-info text-center">
+				Database already populated!
+			</div>
+		{{/if}}

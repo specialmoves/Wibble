@@ -1,60 +1,60 @@
-	<!-- Projects List -->
-	<header class="page-header">
-		<h1>{{title}}</h1>
-	</header>
+		<!-- Projects List -->
+		<header class="page-header">
+			<h1>{{title}}</h1>
+		</header>
 
-	<!-- List of Projects -->
-	<div class="row">
-		<div class="col-lg-6">
-			<ul class="list-group list-projects">
-				{{#if projects}}
-					{{#each projects}}
-						<li class="list-group-item">
-							<a href="/project/{{_id}}">
-								<h4 class="list-group-item-heading">{{name}}</h4>
-								<p class="list-group-item-text">{{health.amount}}%</p>
-							</a>
-						</li>
-					{{/each}}
-				{{else}}
-					<div class="panel panel-info">
-						No projects found.
-					</div>
-				{{/if}}
-			</ul>
-		</div>
-
-		<div class="col-lg-6">
-			<form method="post" action="/project/create" class="form form-project form-horizontal">
-				<fieldset>
-					<div class="panel panel-default clearfix">
-						<div class="panel-heading">
-							<h3 class="panel-title">Add New Project</h3>
+		<!-- List of Projects -->
+		<div class="row">
+			<div class="col-lg-6">
+				<ul class="list-group list-projects">
+					{{#if projects}}
+						{{#each projects}}
+							<li class="list-group-item">
+								<a href="/project/{{_id}}">
+									<h4 class="list-group-item-heading">{{name}}</h4>
+									<p class="list-group-item-text">{{health.amount}}%</p>
+								</a>
+							</li>
+						{{/each}}
+					{{else}}
+						<div class="panel panel-info">
+							No projects found.
 						</div>
+					{{/if}}
+				</ul>
+			</div>
 
-						<div class="panel-body">
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Title</label>
-
-								<div class="col-lg-10">
-									{{#if errors}}
-										{{#each errors}}
-										<input type="text" class="form-control" name="projectName" value="{{value}}" placeholder="e.g. Timecop" />
-										{{/each}}
-									{{else}}
-										<input type="text" class="form-control" name="projectName" value="" placeholder="e.g. Timecop" />
-									{{/if}}
-								</div>
+			<div class="col-lg-6">
+				<form method="post" action="/project/create" class="form form-project form-horizontal">
+					<fieldset>
+						<div class="panel panel-default clearfix">
+							<div class="panel-heading">
+								<h3 class="panel-title">Add New Project</h3>
 							</div>
 
-							<label class="control-label text-danger pull-left">
-								{{#each errors}}{{msg}}{{/each}}
-							</label>
+							<div class="panel-body">
+								<div class="form-group">
+									<label class="col-lg-2 control-label">Title</label>
 
-							<button type="submit" class="btn btn-primary btn-small pull-right"><i class="icon-plus"></i> Add Project</button>
+									<div class="col-lg-10">
+										{{#if errors}}
+											{{#each errors}}
+											<input type="text" class="form-control" name="projectName" value="{{value}}" placeholder="e.g. Timecop" />
+											{{/each}}
+										{{else}}
+											<input type="text" class="form-control" name="projectName" value="" placeholder="e.g. Timecop" />
+										{{/if}}
+									</div>
+								</div>
+
+								<label class="control-label text-danger pull-left">
+									{{#each errors}}{{msg}}{{/each}}
+								</label>
+
+								<button type="submit" class="btn btn-primary btn-small pull-right"><i class="icon-plus"></i> Add Project</button>
+							</div>
 						</div>
-					</div>
-				</fieldset>
-			</form>
+					</fieldset>
+				</form>
+			</div>
 		</div>
-	</div>
