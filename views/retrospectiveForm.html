@@ -20,27 +20,34 @@
                     </div>
                 </div>
             </header>
-            <p class="text-danger pull-left">{{#each errors}}{{msg}}, {{value}} {{/each}}<p>
 
-            <hr class="page-break" />
+            {{#if errors}}
+                <p class="text-danger pull-left">
+                    {{#each errors}}
+                        {{msg}}, {{value}}
+                    {{/each}}
+                </p>
+            {{/if}}
 
             <h2>Project Health</h2>
 
-            <div class="row">
-                {{#each projectHealth}}
-                    {{> _retrospectiveFormOptions}}
-                {{/each}}
-            </div>
-
-            <hr class="page-break" />
+            <table class="table table-hover retrospective-options-table">
+                <tbody>
+                    {{#each projectHealth}}
+{{> _retrospectiveFormOptions}}
+                    {{/each}}
+                </tbody>
+            </table>
 
             <h2>Project Smells Check</h2>
 
-            <div class="row">
-                {{#each projectSmells}}
-                    {{> _retrospectiveFormOptions}}
-                {{/each}}
-            </div>
+            <table class="table table-hover retrospective-options-table">
+                <tbody>
+                    {{#each projectSmells}}
+{{> _retrospectiveFormOptions}}
+                    {{/each}}
+                </tbody>
+            </table>
         </fieldset>
 
         <fieldset class="navbar navbar-inverse navbar-fixed-bottom">

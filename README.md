@@ -8,15 +8,9 @@ Wibble is a simple tool to gather feedback from your team to generate insights f
 
 ## Background
 
-Wibble v0.1 was developed at [Specialmoves](http://www.specialmoves.com) as an experiment in rapid development and also a way for our developers to have a play with [Node.js](http://nodejs.org). We were using Google Forms and [Confluence](https://www.atlassian.com/software/confluence/overview/team-collaboration-software) to collate the same feedback, but it was a slow and error prone process.
+Wibble v0.1 was developed at [Specialmoves](http://www.specialmoves.com) as an experiment in rapid development and also a way for our developers to have a play with Node.js. We were using Google Forms and [Confluence](https://www.atlassian.com/software/confluence/overview/team-collaboration-software) to collate the same feedback, but it was a slow and error prone process.
 
 Designed and built over three days, Wibble v0.1 is the MVP for what could potentially be larger application. We hope that by open-sourcing the project other people might use the tool to help their retrospectives as well as contribute to add missing features.
-
-## Dependencies
-
-* [Node.js](http://nodejs.org) with NPM (Node Package Manager)
-* [MongoDB](http://www.mongodb.org/)
-* [Bower](http://bower.io)
 
 ## How To Run Wibble
 

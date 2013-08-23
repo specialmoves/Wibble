@@ -17,6 +17,6 @@ $('.js-new-item').on('click', function (event) {
     parentTableBody.append(newItemRowHTML);
 });
 
-$(function () {
-    $('textarea').flexText();
-});
+$('.retrospective-question-description').popover();
+
+$('textarea').flexText();

@@ -10,19 +10,17 @@ Gloabl Styles
 
 ---------- INDEX ----------
 
-
 body
-.navbar-brand
 .form
 .form-control
-.page-header 
+.page-header
 .page-break
-.btn 
+.btn
 .btn-group .btn
-.btn-group .btn + .btn 
+.btn-group .btn + .btn
 .btn-group .btn.active
-.col-lg-6 
-.col-lg-6:nth-child(odd) 
+.col-lg-6
+.col-lg-6:nth-child(odd)
 .error-date
 .list-group
 .list-group-attendees li
@@ -37,6 +35,8 @@ body
 body {
 	padding-bottom: 70px;
 }
+
+// General styles and Bootstrap Overrides
 
 .form {
 	padding: 0 0 50px 0;
@@ -56,26 +56,67 @@ body {
 	margin: 30px 0;
 }
 
+.retrospective-options-table tbody > tr {
+	& > .retrospective-options-heading {
+		line-height: 49px;
+		padding: 0 8px;
+		width: 50%;
+	}
+
+	& > .retrospective-options {
+		text-align: right;
+		width: 50%;
+	}
+}
+
 .btn {
-	&:hover {
-		transition: all 100ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+
+$buttonClasses: dont-know, strongly-disagree, disagree, agree, strongly-agree;
+$buttonColors: #aaa, #d9534f, #e48683, #74aad8, #428bca;
+
+@each $buttonClass in $buttonClasses {
+	$i: index($buttonClasses, $buttonClass);
+
+	.retrospective-option-#{$buttonClass} {
+		background-color: rgba(nth($buttonColors, $i), 0.25);
+		color: darken(nth($buttonColors, $i), 10);
+
+		&:hover, &:focus {
+			background-color: rgba(nth($buttonColors, $i), 0.5);
+			color: darken(nth($buttonColors, $i), 20);
+		}
+
+		&.active {
+			background-color: nth($buttonColors, $i);
+		}
 	}
 }
 
 .btn-group {
-	.btn {
+	.retrospective-option {
 		border: 0;
+		cursor: pointer;
+
+		&:last-child:not(:first-child):not(.dropdown-toggle) {
+			border-radius: 5px;
+			margin-left: 5px;
+		}
+
+		&:not(:first-child):not(:last-child):not(.dropdown-toggle):nth-child(4) {
+			border-radius: 0 5px 5px 0;
+		}
 
 		&.active {
-			box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.25);
+			color: #fff;
+		}
+
+		& + .retrospective-option {
+			margin: 0;
 		}
 	}
-
-	.btn + .btn {
-		margin-left: 0;
-	}
 }
-
 
 .col-lg-6 {
 	margin: 0 0 10px 0;
@@ -85,13 +126,13 @@ body {
 	}
 }
 
-/* Project Overview Template */
+// Project Overview Template
 
 .error-date {
 	color: #b94a48;
 }
 
-/* Retrospective View Template */
+// Retrospective View Template
 
 .list-group {
 
@@ -123,50 +164,46 @@ body {
 	}
 }
 
-/* Retrospective Form Template */
+// Retrospective Form Template
 
 .attendee-name,
 .question {
 	margin-bottom: 20px;
 }
 
-/* Media Queries */
+// Print Styles
 
 @media print {
+	body {
+		font-size: 1.5em;
+		margin: 20px 50px 50px 50px;
 
-  body {
+		.lead {
+			margin: 10px 0 20px 0;
+		}
 
-  	font-size: 1.5em;
-    margin: 20px 50px 50px 50px;
+		.page-header {
+			border: none 0;
+			padding-bottom: 0;
+		}
 
-    .lead {
-    	margin: 10px 0 20px 0;
-    }
-    
-    .page-header {
-    	border: none 0;
-    	padding-bottom: 0;
-    }
+		.panel {
+			padding: 0;
+			margin: 0;
+			border: none;
 
-    .panel {
-    	padding: 0;
-    	margin: 0;
-    	border: none;
+			.panel-heading {
+				padding: 0 0 10px 0;
+				margin: 0;
+			}
 
-    	.panel-heading {
-    		padding: 0 0 10px 0;
-    		margin: 0;
-    	}
-
-    	td,
-    	textarea,
-    	pre {
-    		border: none;
-	    	margin: 0;
-	    	padding: 0;
-    	}
-    }
-  }
+			td,
+			textarea,
+			pre {
+				border: none;
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
 }
-
-
