@@ -12,6 +12,8 @@ Wibble v0.1 was developed at [Specialmoves](http://www.specialmoves.com) as an e
 
 Designed and built over three days, Wibble v0.1 is the MVP for what could potentially be larger application. We hope that by open-sourcing the project other people might use the tool to help their retrospectives as well as contribute to add missing features.
 
+The [Specialmoves Blog](http://blog.specialmoves.com/geeks/wibble-a-simple-retrospective-tool/) has a more detailed history and list of features.
+
 ## Dependencies
 
 * Wibble is built on NodeJS which can be downloaded from _http://nodejs.org/_.
