@@ -16,7 +16,6 @@ Designed and built over three days, Wibble v0.1 is the MVP for what could potent
 
 * In your Terminal or Command Prompt, `cd` to the directory where Wibble lives on your computer
 * Install the project's Node.js dependencies by running `npm install`
-* Make sure you have the necessary JavaScript and CSS libraries for the UI by running `bower install` - they should already be in the repo, but run this anyway just in case
 * Start your MongoDB process so Wibble has a database to work with
 * And finally run `node app.js` to start the server (or use [nodemon](https://github.com/remy/nodemon) to avoid manual server restarts)
 
