@@ -5,7 +5,7 @@ var DateHelper = require('../lib/dateHelper');
 
 // GET: /
 exports.index = function(req, res) {
-	Project.find(function(error, projects) {
+	Project.find({active: true},function(error, projects) {
 		res.render('index', {
 			title: 'Projects',
 			projects: projects
@@ -20,13 +20,13 @@ exports.createProject = function (req, res, next) {
 
 	var pageErrors = req.validationErrors();
 
-	var projects = Project.find(function(error, projects){
+	var projects = Project.find({active: true},function(error, projects){
 
 		if (!pageErrors) {
-			console.log('no errors');
 
 			var project = new Project({
-				name: req.body.projectName
+				name: req.body.projectName,
+				active: true
 			});
 
 			Project.findOne({name: { $regex: new RegExp("^" + project.name.toLowerCase(), "i") } }, function(error, project) {
@@ -47,7 +47,8 @@ exports.createProject = function (req, res, next) {
 				if (!project) {
 
 					var project = new Project({
-						name : req.body.projectName
+						name : req.body.projectName,
+						active: true
 					});
 
 					console.log('project: project name does exist');
@@ -75,6 +76,21 @@ exports.createProject = function (req, res, next) {
 
 	});
 };
+
+exports.deleteProject = function (req, res, next) {
+	var project = req.project;
+	project.active = false;
+
+	project.save(function(error, project){
+		if(error){
+			console.log('error saving', error);
+			return next(error);
+		}
+
+		res.redirect('/');
+	});	
+
+}
 
 exports.viewProject = function (req, res, next) {
 	var project = req.project;
