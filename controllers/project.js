@@ -101,6 +101,7 @@ exports.viewProject = function (req, res, next) {
 		project: project,
 		date_options: DateHelper.dateOptions,
 		month_options: DateHelper.monthOptions,
-		year_options: DateHelper.yearOptions
+		year_options: DateHelper.yearOptions,
+		showDelete: project.retrospectives.length === 0
 	});
 };

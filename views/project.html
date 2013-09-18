@@ -8,9 +8,10 @@
 			<h1>{{title}} <small>Project Health: <strong>{{project.health.amount}}%</strong> <span class="text-success">({{project.health.variation}}%)</span></small></h1>
 		</header>
 		
-		<form method="get" action="/project/delete/{{project.id}}">
+		{{#if showDelete}}
 			<button type="submit" id="deleteProject" name="deleteProject" data-toggle="modal" data-target="#deleteConfirmationModal" class="btn btn-danger btn-small pull-right"><i class="glyphicon glyphicon-remove"></i> Delete Project</button>
-		</form>
+		{{/if}}
+
 		<!-- List of Retrospectives -->
 		<h2>Retrospectives</h2>
 
