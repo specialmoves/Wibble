@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 
 var projectSchema = new Schema({
 	name : String,
-	retrospectives : [Retrospective]
+	retrospectives : [Retrospective],
+	active: Boolean
 });
 
 projectSchema.virtual('health').get(function () {
