@@ -56,16 +56,24 @@ body {
 	margin: 30px 0;
 }
 
-.retrospective-options-table tbody > tr {
-	& > .retrospective-options-heading {
-		line-height: 49px;
-		padding: 0 8px;
-		width: 50%;
-	}
+.retrospective-options-table tbody {
+	tr {
+		&.error {
+			th { color: #b94a48 }
+		}	
+	} 
+	> tr {
 
-	& > .retrospective-options {
-		text-align: right;
-		width: 50%;
+		& > .retrospective-options-heading {
+			line-height: 49px;
+			padding: 0 8px;
+			width: 50%;
+		}
+
+		& > .retrospective-options {
+			text-align: right;
+			width: 50%;
+		}
 	}
 }
 
