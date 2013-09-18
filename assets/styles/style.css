@@ -48,6 +48,8 @@ body {
   height: 1px;
   margin: 30px 0; }
 
+.retrospective-options-table tbody tr.error th {
+  color: #b94a48; }
 .retrospective-options-table tbody > tr > .retrospective-options-heading {
   line-height: 49px;
   padding: 0 8px;
