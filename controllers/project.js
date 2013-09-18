@@ -25,11 +25,10 @@ exports.createProject = function (req, res, next) {
 		if (!pageErrors) {
 
 			var project = new Project({
-				name: req.body.projectName,
-				active: true
+				name: req.body.projectName
 			});
 
-			Project.findOne({name: { $regex: new RegExp("^" + project.name.toLowerCase(), "i") } }, function(error, project) {
+			Project.findOne({name: { $regex: new RegExp("^" + project.name.toLowerCase(), "i") }, active : true }, function(error, project) {
 				if (error) {
 					console.log('error getting project from db');
 					return next(error);
