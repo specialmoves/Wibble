@@ -18,3 +18,9 @@ $('.js-new-item').on('click', function (event) {
 });
 
 $('.retrospective-question-description').popover();
+
+$('.edit-project-name').click(function(){
+	$('.edit-project-name-form').removeClass('hidden');
+	$('.edit-project-name').hide();
+	$('.project-name').hide();
+});

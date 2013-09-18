@@ -88,7 +88,20 @@ exports.deleteProject = function (req, res, next) {
 
 		res.redirect('/');
 	});	
+}
 
+exports.renameProject = function (req, res, next) {
+	var project = req.project;
+	project.name = req.body.projectName;
+
+	project.save(function(error, project){
+		if(error){
+			console.log('error saving', error);
+			return next(error);
+		}
+
+		res.redirect('/project/' + project._id);
+	});	
 }
 
 exports.viewProject = function (req, res, next) {
