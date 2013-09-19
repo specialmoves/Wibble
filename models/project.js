@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'), 
 	Schema = mongoose.Schema,
 	Retrospective = require('./retrospective'),
-	DateHelper = require('../lib/DateHelper');
+	DateHelper = require('../lib/dateHelper');
 
 var projectSchema = new Schema({
 	name : String,
