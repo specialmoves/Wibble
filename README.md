@@ -21,13 +21,17 @@ The [Specialmoves Blog](http://blog.specialmoves.com/geeks/wibble-a-simple-retro
 
 ## How To Run Wibble
 
+
 1. In your Terminal or Command Prompt, go to the directory where Wibble lives on your computer.
 2. Install the project's Node.js dependencies by running `npm install`.
-3. [Start your MongoDB process] (http://docs.mongodb.org/manual/tutorial/getting-started/) so Wibble has a database to work with.
-4. Run `node app.js` to start the server (or use [nodemon](https://github.com/remy/nodemon) to avoid manual server restarts).
+3. [Make sure yuou have mongodb installed] (http://docs.mongodb.org/manual/tutorial/getting-started/) so Wibble has a database to work with.
+4. [For PC Users] Make sure you add the path (e.g 'c:\mongodb;') for your mongo database in your system environment variables (http://support.microsoft.com/kb/310519) .
+4. Run `grunt` to start. This will start up your database, run a watch on your sass folder and then start nodemon [nodemon](https://github.com/remy/nodemon).
 5. Open _http://localhost:3000_ in your web browser, and Wibble should be up and running! (Note "3000" is the default port, your Node configuration may change this).
 6. Before you get started with creating retrospectives, click the "_DB Admin_" link in the header and populate the Database with the initial data required to get to work.
 7. Get Wibbling!
+
+
 
 ## Contact
 
